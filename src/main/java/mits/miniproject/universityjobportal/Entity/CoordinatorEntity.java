@@ -1,24 +1,20 @@
 package mits.miniproject.universityjobportal.Entity;
 
 import jakarta.persistence.*;
-import java.math.BigDecimal;
-import java.time.LocalDate;
+
 import java.time.LocalDateTime;
 
 @Entity
-public class StudentEntity {
+public class CoordinatorEntity {
     @Id
     private Long id;
 
     @OneToOne
-    @MapsId //no using of @Generated values since this id is borrowed from the userentity
+    @MapsId
     private UserEntity user;
-    @Column(unique = true)
-    private String usn;
     private String department;
-    private BigDecimal cgpa;
-    private int backlogs;
-    private int graduationYear;
+    private String designation;
+    @Column(updatable = false)
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
@@ -33,19 +29,20 @@ public class StudentEntity {
         this.updatedAt=LocalDateTime.now();
     }
 
-    public StudentEntity() {
+    public CoordinatorEntity() {
     }
 
-    public StudentEntity(Long id, UserEntity user, String usn, String department, BigDecimal cgpa, int backlogs, int graduationYear, LocalDateTime createdAt, LocalDateTime updatedAt) {
+    public CoordinatorEntity(Long id, UserEntity user, String department, String designation, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.id = id;
         this.user = user;
-        this.usn = usn;
         this.department = department;
-        this.cgpa = cgpa;
-        this.backlogs = backlogs;
-        this.graduationYear = graduationYear;
+        this.designation = designation;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public void setId(Long id) {
@@ -60,18 +57,6 @@ public class StudentEntity {
         this.user = user;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public String getUsn() {
-        return usn;
-    }
-
-    public void setUsn(String usn) {
-        this.usn = usn;
-    }
-
     public String getDepartment() {
         return department;
     }
@@ -80,28 +65,12 @@ public class StudentEntity {
         this.department = department;
     }
 
-    public BigDecimal getCgpa() {
-        return cgpa;
+    public String getDesignation() {
+        return designation;
     }
 
-    public void setCgpa(BigDecimal cgpa) {
-        this.cgpa = cgpa;
-    }
-
-    public int getBacklogs() {
-        return backlogs;
-    }
-
-    public void setBacklogs(int backlogs) {
-        this.backlogs = backlogs;
-    }
-
-    public int getGraduationYear() {
-        return graduationYear;
-    }
-
-    public void setGraduationYear(int graduationYear) {
-        this.graduationYear = graduationYear;
+    public void setDesignation(String designation) {
+        this.designation = designation;
     }
 
     public LocalDateTime getCreatedAt() {
