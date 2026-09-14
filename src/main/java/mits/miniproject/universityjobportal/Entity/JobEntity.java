@@ -13,7 +13,8 @@ public class JobEntity {
     private Long id;
 
     @ManyToOne
-    private Long coordinatorId;
+    @JoinColumn(name = "coordinator_id")
+    private CoordinatorEntity coordinator;   // ← name wasn't updated when you changed the type
     private String title;
     private String companyName;
     private String description;
@@ -41,9 +42,9 @@ public class JobEntity {
     public JobEntity() {
     }
 
-    public JobEntity(Long id, Long coordinatorId, String title, String companyName, String description, String location, BigDecimal salary, LocalDateTime applicationStartDate, LocalDateTime applicationEndDate, Status status, LocalDateTime createdAt, LocalDateTime updatedAt) {
+    public JobEntity(Long id, CoordinatorEntity coordinatorId, String title, String companyName, String description, String location, BigDecimal salary, LocalDateTime applicationStartDate, LocalDateTime applicationEndDate, Status status, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.id = id;
-        this.coordinatorId = coordinatorId;
+        this.coordinator = coordinatorId;
         this.title = title;
         this.companyName = companyName;
         this.description = description;
@@ -64,11 +65,11 @@ public class JobEntity {
         this.id = id;
     }
 
-    public Long getCoordinatorId() {
-        return coordinatorId;
+    public CoordinatorEntity getCoordinatorId() {
+        return coordinator;
     }
 
-    public void setCoordinatorId(Long coordinatorId) {
+    public void setCoordinatorId(CoordinatorEntity coordinatorId) {
         coordinatorId = coordinatorId;
     }
 
