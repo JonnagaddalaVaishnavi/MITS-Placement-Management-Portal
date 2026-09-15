@@ -24,7 +24,7 @@ public class JobEligibilityEntity {
 
     private String eligibleDepartments;
 
-    private LocalDate graduationYear;
+    private int graduationYear;
 
     private String additionalCriteria;
 
@@ -47,7 +47,7 @@ public class JobEligibilityEntity {
     public JobEligibilityEntity() {
     }
 
-    public JobEligibilityEntity(Long id, JobEntity job, BigDecimal minCgpa, Integer maxBacklogs, String eligibleDepartments, LocalDate graduationYear, String additionalCriteria, LocalDateTime createdAt, LocalDateTime updatedAt) {
+    public JobEligibilityEntity(Long id, JobEntity job, BigDecimal minCgpa, Integer maxBacklogs, String eligibleDepartments, int graduationYear, String additionalCriteria, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.id = id;
         this.job = job;
         this.minCgpa = minCgpa;
@@ -99,11 +99,11 @@ public class JobEligibilityEntity {
         this.eligibleDepartments = eligibleDepartments;
     }
 
-    public LocalDate getGraduationYear() {
+    public int getGraduationYear() {
         return graduationYear;
     }
 
-    public void setGraduationYear(LocalDate graduationYear) {
+    public void setGraduationYear(int graduationYear) {
         this.graduationYear = graduationYear;
     }
 
